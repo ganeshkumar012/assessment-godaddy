@@ -13,4 +13,19 @@ export interface Repo {
   has_wiki:boolean;
   fork : boolean;
   archived: boolean;
+  full_name:string;
+  created_at:string;
+  updated_at:string;
+  pushed_at:string;
+  size:number;
+  default_branch:string;
+  visibility:string;
+  license: {
+    key: string;
+    name: string;
+    spdx_id: string;
+    url: string;
+    node_id: string;
+  } | null;
+  clone_url:string;
 }
