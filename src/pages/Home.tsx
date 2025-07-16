@@ -63,7 +63,10 @@ export default function Home() {
     0
   );
   const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
-  const totalWatchers = repos.reduce((sum, repo) => sum + repo.watchers_count, 0);
+  const totalWatchers = repos.reduce(
+    (sum, repo) => sum + repo.watchers_count,
+    0
+  );
   const languages = [
     ...new Set(repos.map((repo) => repo.language).filter(Boolean)),
   ];
@@ -118,15 +121,16 @@ export default function Home() {
         </div>
 
         {/* Repository Grid */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {repos.map((repo) => (
             <Link
               key={repo.id}
               to={`/repo/${repo.name}`}
-              className="group block"
+              className="group block h-full"
             >
-              {/* Header */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 transform hover:-translate-y-1 border border-gray-100/50">
+              <div className="flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 transform hover:-translate-y-1 border border-gray-100/50">
+                {/* Header */}
                 <div className="flex flex-col mb-4">
                   <h2 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors leading-tight break-words">
                     <div className="flex items-center justify-between gap-2 w-full">
@@ -141,21 +145,21 @@ export default function Home() {
                 </div>
 
                 {/* Description */}
-                <div className="mb-4">
+                <div className="mb-4 flex-grow">
                   {repo.description ? (
-                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 min-h-[3.75rem]">
                       {repo.description.length > 120
                         ? `${repo.description.slice(0, 120)}...`
                         : repo.description}
                     </p>
                   ) : (
-                    <p className="text-gray-400 text-sm italic">
+                    <p className="text-gray-400 text-sm italic min-h-[3.75rem]">
                       No description available
                     </p>
                   )}
                 </div>
 
-                {/* Language Badge */}
+                {/* Language */}
                 {repo.language && (
                   <div className="mb-4">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
@@ -165,7 +169,7 @@ export default function Home() {
                 )}
 
                 {/* Stats */}
-                <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                <div className="flex flex-wrap gap-4 text-sm text-gray-600 mt-auto">
                   <div className="flex items-center gap-1">
                     <Star className="text-yellow-500 w-5 h-5" />
                     <span>{repo.stargazers_count.toLocaleString()}</span>
