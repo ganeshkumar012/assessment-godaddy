@@ -8,10 +8,12 @@ A simple and responsive web app that fetches and displays GoDaddy's open-source 
 
 
 ```bash
-git clone https://github.com/your-username/godaddy-repos.git
-cd godaddy-repos
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
 
 ```
+> Replace `<your-username>` and `<repo-name>` with your actual GitHub username and repo name.
+
 
 ### 2. Install Dependencies
 ```bash
@@ -54,10 +56,13 @@ Everything from layout, logic, styling,and error handling was hand-crafted with 
 
 ->Add search + filter by language
 
+->Add pagination for better view of cards 
+
 ->Add contributor stats
 
 ->Toggle view between cards & table
 
 ->Error boundaries & toast notifications
+
 
 
